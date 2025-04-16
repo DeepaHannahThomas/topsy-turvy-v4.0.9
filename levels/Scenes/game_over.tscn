@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1w8opv4ig4dr"]
+
+[ext_resource type="Script" uid="uid://bxfceh3wb7g4g" path="res://Scripts/game_over.gd" id="1_8ukxv"]
+[ext_resource type="FontFile" uid="uid://cty3q6ksa7g0p" path="res://Assets/hehefont.ttf" id="2_xh5b3"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_8ukxv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 93.0
+offset_top = 81.0
+offset_right = 1184.0
+offset_bottom = 316.0
+theme_override_fonts/font = ExtResource("2_xh5b3")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 32.0
+offset_top = 39.0
+offset_right = 1257.0
+offset_bottom = 622.0
+
+[node name="Retry" type="Button" parent="."]
+process_mode = 3
+offset_left = 404.0
+offset_top = 310.0
+offset_right = 861.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("2_xh5b3")
+theme_override_font_sizes/font_size = 70
+text = "Retry"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

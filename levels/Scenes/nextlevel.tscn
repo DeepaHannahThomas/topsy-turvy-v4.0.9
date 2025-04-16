@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnmiie0ukwqxf"]
+
+[ext_resource type="Script" uid="uid://c4w0yg2114xat" path="res://Scripts/nextlevel.gd" id="1_daypk"]
+[ext_resource type="Texture2D" uid="uid://b33i8dwbmegkp" path="res://Assets/end.png" id="2_32lxu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw2sr"]
+size = Vector2(31, 29)
+
+[node name="nextlevel" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_daypk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_32lxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16.5, 17.5)
+shape = SubResource("RectangleShape2D_cw2sr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

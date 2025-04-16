@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://j1dcr2ger0xk"]
+
+[ext_resource type="Texture2D" uid="uid://d0asfhuuem5qg" path="res://Assets/diamond.png" id="1_2qo34"]
+[ext_resource type="Script" uid="uid://k3lbyk2juayc" path="res://Scripts/diamond.gd" id="1_tjcex"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgi06"]
+radius = 6.0
+height = 12.0
+
+[node name="diamond" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_tjcex")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2qo34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_jgi06")
+
+[connection signal="body_entered" from="." to="." method="diamond_collected"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctxm58dap0uc3"]
+
+[ext_resource type="Texture2D" uid="uid://bu7jfg4xjiiwn" path="res://Assets/sheetnewfrnewest.png" id="1_jxgpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dr0a"]
+size = Vector2(16, 6)
+
+[sub_resource type="Animation" id="Animation_a21kc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w7qse"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -88), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jcon"]
+_data = {
+&"RESET": SubResource("Animation_a21kc"),
+&"move": SubResource("Animation_w7qse")
+}
+
+[node name="platform" type="Node2D"]
+
+[node name="vmpu" type="AnimatableBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="vmpu"]
+texture = ExtResource("1_jxgpv")
+region_enabled = true
+region_rect = Rect2(80, 0, 16, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vmpu"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_6dr0a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="vmpu"]
+libraries = {
+&"": SubResource("AnimationLibrary_8jcon")
+}
+autoplay = "move"
